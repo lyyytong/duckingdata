@@ -1,5 +1,5 @@
 async function drawChart() {
-    const raw = await d3.csv('../data/220204-penguins/penguins_size.csv')
+    const raw = await d3.csv('data/220204-penguins/penguins_size.csv')
 
     let dataset = []
     const keyFeatures = ['culmen_length_mm','culmen_depth_mm', 'body_mass_g', 'flipper_length_mm']
