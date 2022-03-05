@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles.css" />
+    <title>duckingdata</title>
+  </head>
+  <body>
+    <script id="nav-bar" src="/scripts/nav.js"></script>
+    <main onclick="bodyOnClick()">
+      <header class="pop">What makes a manly penguin?</header>
+      <p>
+        In humans, what makes a man noticeably different from the opposite sex
+        tends to make him more appealing. Physical features like the broad
+        shoulders, square jaws, and superior height appear often as qualifiers
+        of (stereotypical) manliness.
+      </p>
+      <p>
+        I wanted to see if there are equivalents for penguins — visible features
+        whose size signals strong
+        <span class="pop">male-ness</span>. The below visualization was made
+        from a dataset<sup>1</sup> of body measurements from 333<sup>2</sup>
+        brush-tailed (also called rump-legged, or Pygoscelis) penguins,
+        including the Adélie, Chinstrap, and Gentoo species.
+      </p>
+      <div class="images-row">
+        <figure>
+          <img src="../images/220204-penguins/adelie.png"Adélie" />
+          <figcaption>Adélie</figcaption>
+        </figure>
+        <figure>
+          <img src="../images/220204-penguins/chinstrap.png" alt="Chinstrap" />
+          <figcaption>Chinstrap</figcaption>
+        </figure>
+        <figure>
+          <img src="../images/220204-penguins/gentoo.png" alt="Gentoo" />
+          <figcaption>Gentoo</figcaption>
+        </figure>
+      </div>
+      <div id="chart">
+        <div class="selector">
+          <text>Choose species</text>
+          <div class="options">
+            <div>
+              <input
+                type="radio"
+                id="Adelie"
+                name="selector"
+                checked="checked"
+              />
+              <label for="Adelie">Adélie</label>
+              <div class="check"></div>
+            </div>
+            <div>
+              <input type="radio" id="Gentoo" name="selector" />
+              <label for="Gentoo">Gentoo</label>
+              <div class="check"></div>
+            </div>
+            <div>
+              <input type="radio" id="Chinstrap" name="selector" />
+              <label for="Chinstrap">Chinstrap</label>
+              <div class="check"></div>
+            </div>
+            <div>
+              <input type="checkbox" id="outliers" />
+              <label for="outliers">Exclude outliers</label>
+              <div class="checkmark"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p>
+        Weight shows the widest gender gap for all three species. This makes
+        sense, as a study of one Adélie colony found that 17.3% of chick losses
+        were from parent deserting the nest due to starvation. The loss could
+        have been avoided if the parent could hold out for a little longer,
+        since the returning mates arrived only a few days later. In the waiting
+        game, it's advantageous to be a large, fat penguin.<sup>3</sup> For
+        mommy penguins,
+        <span class="pop"
+          >fatter husbands mean higher chance of survival for her babies.</span
+        >
+      </p>
+      <p>
+        Second, while males are generally larger than females, the distinction
+        can be subtle. Some features show more pronounced difference, where we
+        can almost draw a line to separate observations of each gender, like
+        weight for Adélie and Gentoo, beak depth for Gentoo, and to lesser
+        extent beak length for Chinstrap. There are otherwise large areas where
+        blue and green dots migle, where both genders occupy the same range.
+        This also makes sense: in humans, for example, broad shoulders or
+        angular face shapes are not exlusive to men.
+        <span class="pop">A combination of several features together</span>,
+        rather than just one, may be more accurate predictor of sex.
+      </p>
+      <div>
+        <p>
+          <span class="pop">Limitions: </span>The highlighted averages in this
+          graph don't reflect conclusions from the research paper<sup>1</sup>
+          that accompanies the dataset. It suggests the strongest predictive
+          features of male are:
+        </p>
+        <ul>
+          <li>Weight and beak length for Adélie</li>
+          <li>Weight and beak depth for Gentoo</li>
+          <li>Beak length and depth for Chinstrap</li>
+        </ul>
+        <p>
+          With weight the least predictive feature for Chinstrap, and wing
+          length a weak predictor for all three species.
+        </p>
+      </div>
+      <p>
+        Beside showing that wing length has the smallest gender gap in all three
+        species, the graph fails to reflect most of the rest. This may be
+        because comparing averages is a weak way to determine which features are
+        predictive of sex, as it doesn't take into account overlaps in the
+        observation ranges of two genders, of which there are many, as mentioned
+        earlier. A large overlap means the feature cannot be used to easily
+        distinguish categories.
+      </p>
+      <p>
+        For this classification problem, multivariate logistic regression and
+        more advanced statistical analyses, like ones performed in the research
+        paper, would be a better way to go. Since I'm statistic-illiterate,
+        here's a penguin: 🐧
+      </p>
+      <ol id="source">
+        <li>
+          Gorman KB, Williams TD, Fraser WR (2014) Ecological Sexual Dimorphism
+          and Environmental Variability within a Community of Antarctic Penguins
+          (Genus Pygoscelis). PLoS ONE 9(3): e90081.
+          <a href="https://doi.org/10.1371/journal.pone.0090081"
+            >http://doi.org</a
+          >
+          (via
+          <a
+            href="https://www.kaggle.com/parulpandey/palmer-archipelago-antarctica-penguin-data"
+            >www.kaggle.com</a
+          >)
+        </li>
+        <li>
+          From the original dataset, 11 were excluded due to missing data.
+        </li>
+        <li>
+          The Ocean Portal, Smithsonian Institution, National Museum of Natural
+          History, and Sant Marine Science Chair, accessed 3 March 2022 (<a
+            href="https://ocean.si.edu/ocean-life/seabirds/penguins"
+            >http://ocean.si.edu</a
+          >)
+        </li>
+      </ol>
+    </main>
+  </body>
+  <script src="scripts/d3.min.js"></script>
+  <script src="scripts/220204-penguins.js"></script>
+</html>
