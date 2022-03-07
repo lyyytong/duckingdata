@@ -345,7 +345,6 @@ main p {
 }
 
 .pop-abit {
-    /* background: linear-gradient(0deg, var(--text-highlight) 10%, transparent 20%); */
     text-decoration: 2.5px solid underline var(--text-highlight);
 }
 
@@ -381,7 +380,6 @@ main p {
     }
     main {
         width: 100% !important;
-        /* overflow-x: hidden; */
     }
     main p,
     #footnote,
