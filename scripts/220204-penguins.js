@@ -48,7 +48,7 @@ async function drawChart() {
 
     const genderScale = d3.scaleOrdinal()
         .domain(['MALE', 'FEMALE'])
-        .range(['blue', 'green'])
+        .range(['#0000d8', '#268C07'])
     const culmenLengthScale = d3.scaleLinear()
         .domain([
             d3.min(dataset, culmenLengthAccessor)*.95,
