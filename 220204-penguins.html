@@ -19,10 +19,9 @@
       </p>
       <p>
         I wanted to see if there are equivalents for penguins — visible features
-        whose size signals strong
-        <span class="pop-abit">masculinity</span>. The below visualization was
-        made from a dataset<sup><a href="#note-1">1</a></sup> of body
-        measurements from 333<sup><a href="#note-2">2</a></sup>
+        whose size signals strong masculinity. The below visualization was made
+        from a dataset<sup>(<a href="#note-1">1</a>)</sup> of body measurements
+        from 333<sup>(<a href="#note-2">2</a>)</sup>
         brush-tailed (also called rump-legged, or Pygoscelis) penguins,
         including the Adélie, Chinstrap, and Gentoo species.
       </p>
@@ -40,38 +39,40 @@
           <figcaption>Gentoo</figcaption>
         </figure>
       </div>
-      <div id="chart">
-        <div class="selector">
-          <text>Choose species</text>
-          <div class="options">
-            <div>
-              <input
-                type="radio"
-                id="Adelie"
-                name="selector"
-                checked="checked"
-              />
-              <label for="Adelie">Adélie</label>
-              <div class="check"></div>
-            </div>
-            <div>
-              <input type="radio" id="Gentoo" name="selector" />
-              <label for="Gentoo">Gentoo</label>
-              <div class="check"></div>
-            </div>
-            <div>
-              <input type="radio" id="Chinstrap" name="selector" />
-              <label for="Chinstrap">Chinstrap</label>
-              <div class="check"></div>
-            </div>
-            <div>
-              <input type="checkbox" id="outliers" />
-              <label for="outliers">Exclude outliers</label>
-              <div class="checkmark"></div>
-            </div>
-          </div>
-        </div>
-      </div>
+     <div class="chart-wrapper">
+       <div id="chart">
+         <div class="selector">
+           <text>Choose species</text>
+           <div class="options">
+             <div>
+               <input
+                 type="radio"
+                 id="Adelie"
+                 name="selector"
+                 checked="checked"
+               />
+               <label for="Adelie">Adélie</label>
+               <div class="check"></div>
+             </div>
+             <div>
+               <input type="radio" id="Gentoo" name="selector" />
+               <label for="Gentoo">Gentoo</label>
+               <div class="check"></div>
+             </div>
+             <div>
+               <input type="radio" id="Chinstrap" name="selector" />
+               <label for="Chinstrap">Chinstrap</label>
+               <div class="check"></div>
+             </div>
+             <div>
+               <input type="checkbox" id="outliers" />
+               <label for="outliers">Exclude outliers</label>
+               <div class="checkmark"></div>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
       <p>
         Weight shows the widest gender gap for all three species. This makes
         sense: a study of one Adélie colony found that 17.3% of chick losses
@@ -79,11 +80,11 @@
         returning mates arrived only a few days later, the loss could have been
         avoided if the parent could hold out for a little longer. In the waiting
         game, it's advantageous to be a large, fat penguin.<sup
-          ><a href="#note-3">3</a></sup
+          >(<a href="#note-3">3</a>)</sup
         >
-        For mommy penguins,
-        <span class="pop-abit"
-          >fatter husbands mean higher chance of survival for her babies.</span
+        <mark
+          >For mommy penguins, fatter husbands mean higher chance of survival
+          for her babies.</mark
         >
       </p>
       <p>
@@ -100,13 +101,11 @@
         may be more accurate predictor of sex.
       </p>
       <p>
-        To overgeneralize, this means to me that
-        <span class="pop-abit"
-          >plump, curvaceous women with significant lips translate to very macho
-          penguins</span
-        >, making them highly desirable to both species.
+        To overgeneralize, it looks like plump, curvaceous women with
+        significant lips translate to very macho penguins, making them highly
+        desirable to both species.
       </p>
-      <div id="footnote">
+      <div class="footnote">
         <ol>
           <li id="note-1">
             Gorman KB, Williams TD, Fraser WR (2014) Ecological Sexual
@@ -134,7 +133,7 @@
         </ol>
         <div>
           <p>
-            <span class="pop-abit">Limitations:</span><br />The highlighted
+            <span class="pop">Limitations</span><br />The highlighted
             averages in this graph don't reflect conclusions from the research
             paper that accompanies the dataset. It suggests the strongest
             predictive features of male are:

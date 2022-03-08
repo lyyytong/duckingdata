@@ -23,7 +23,7 @@ async function drawChart() {
             top: 10,
             right: 10,
             bottom: 10,
-            left: width/5.8
+            left: width/6
         },
     }
     dimensions.boundedWidth = dimensions.width - dimensions.margins.left - dimensions.margins.right
