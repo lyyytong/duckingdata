@@ -1,8 +1,8 @@
 fetch('nav.html')
 .then(res => res.text())
 .then(text => {
-    let placeholder = document.querySelector('script#nav-bar')
-    let navbar = document.createElement('nav')
+    const placeholder = document.querySelector('script#nav-bar')
+    const navbar = document.createElement('nav')
     navbar.innerHTML = text
     placeholder.parentNode.replaceChild(navbar, placeholder)
 })
