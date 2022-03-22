@@ -1,7 +1,6 @@
 @import url("https://rsms.me/inter/inter.css");
 html {
   font-family: "Inter", sans-serif;
-  height: -webkit-fill-available;
 }
 @supports (font-variation-settings: normal) {
   html {
@@ -21,20 +20,22 @@ html {
   /* fonts */
   --font-main-size: 16px;
   --font-legend-size: 13px;
+  --font-tiny-size: 10.5px;
   --font-nav-button-size: 45px;
   /* layout */
   --margin: 30px;
   --mini-margin: 15px;
-  --padding: 30px;
+  --padding: 40px;
   --mini-padding: 10px;
-  --nav-width: 350px;
+  --nav-width: 380px;
   --paragraph-width: 40vw;
   --paragraph-width-mobile: 70vw;
-  --paragraph-max-width: 800px;
+  --paragraph-max-width: 700px;
   --paragraph-min-width: 300px;
-  --graph-width: 60vw;
-  --graph-max-width: 1100px;
-  --graph-min-width: 960px;
+  --chart-mobile-min-width: 600px;
+  --chart--wide-width: 60vw;
+  --chart-wide-max-width: 1100px;
+  --chart-wide-min-width: 960px;
 }
 
 @keyframes fadeInAnimation {
@@ -46,10 +47,14 @@ html {
   }
 }
 
+html {
+  height: -webkit-fill-available;
+}
+
 * {
   box-sizing: border-box;
   font-weight: 450;
-  line-height: 1.35;
+  line-height: 1.4;
   padding: 0;
   margin: 0;
   max-width: 100%;
@@ -77,8 +82,9 @@ figcaption {
   font-size: var(--font-legend-size);
 }
 
-sup {
-  font-size: calc(var(--font-legend-size)*.8);
+sup,
+sub {
+  font-size: var(--font-tiny-size);
 }
 
 h1,
@@ -109,8 +115,11 @@ label {
 }
 
 li {
-  margin: calc(var(--mini-padding) / 3) 0;
-  padding-left: calc(var(--mini-padding) / 2);
+  padding-left: 10px;
+}
+
+line {
+  stroke: var(--text-color);
 }
 
 mark {
@@ -118,7 +127,6 @@ mark {
 }
 
 main {
-  /* align-items: center; */
   display: flex;
   flex-direction: column;
   gap: var(--margin);
@@ -127,23 +135,15 @@ main {
   padding: var(--padding);
 }
 
-main header,
-main p {
+main :is(header, ul, ol, p) {
   line-break: strict;
   max-width: var(--paragraph-max-width);
   min-width: var(--paragraph-min-width);
   width: var(--paragraph-width);
 }
 
-main ul {
-  list-style: "+" outside;
-  position: relative;
-  right: calc(var(--mini-padding) / 2);
-}
-
 nav {
   background: var(--base-color);
-  /* top: 0px; */
   display: flex;
   flex-direction: column;
   gap: var(--margin);
@@ -153,11 +153,6 @@ nav {
   position: fixed;
   width: var(--nav-width);
   z-index: 1;
-}
-
-nav ul {
-  list-style: "+" outside;
-  padding-left: var(--mini-padding);
 }
 
 nav a {
@@ -171,32 +166,68 @@ nav li:hover a {
 
 ol {
   list-style-type: none;
-  position: relative;
-  right: calc(var(--mini-padding) / 2);
+  margin: 0.6em 0;
+  padding-left: 10px;
 }
 
 ol li {
   counter-increment: step-counter;
+  padding-left: 12px;
 }
 
 ol li:before {
   content: counter(step-counter) ".";
-  font-feature-settings: "tnum" 1;
-  left: calc(var(--padding) / (-2) - 8px);
+  left: -14px;
   position: absolute;
-  text-align: right;
+  text-align: center;
   width: 1.5rem;
 }
 
-#chart {
+ol ul li:before {
+  content: "";
+}
+
+path {
+  fill: none;
+  stroke: var(--text-color);
+}
+
+ul {
+  list-style: "+" outside;
+  margin: 0.6em 0;
+  padding-left: 12px;
+}
+
+ul ul {
+  list-style: "~";
+  margin: 0;
+  padding-left: 20px;
+}
+
+ul ul ul {
+  list-style: "𝗑";
+  padding-left: 19px;
+}
+
+ul ul ul ul {
+  list-style: "−";
+  padding-left: 20px;
+}
+
+svg {
+  overflow: visible;
+}
+
+#chart1,
+#chart2,
+#chart3,
+#chart4,
+#chart5 {
   display: flex;
   flex-direction: column;
   height: auto;
   gap: var(--mini-margin);
   margin: var(--margin) 0;
-  max-width: var(--graph-max-width);
-  min-width: var(--graph-min-width);
-  width: var(--graph-width);
 }
 
 #nav-button {
@@ -227,23 +258,48 @@ ol li:before {
   right: 0;
 }
 
-.axis {
-  color: var(--text-color);
-  opacity: var(--faint-peripherals-opacity);
+.align-left {
+  text-anchor: start !important;
 }
 
-.axis path {
-  stroke: var(--text-color);
-  stroke-dasharray: 2, 2;
+.align-middle {
+  text-anchor: middle !important;
 }
 
-.circle {
-  opacity: var(--faint-dots-opacity);
+.align-right {
+  text-anchor: end !important;
 }
 
-.circle-avg {
-  fill: var(--base-color);
-  stroke-width: 1.2px;
+.annotation-line-pop {
+  stroke: var(--accent-color);
+}
+
+.annotation-line-dotted {
+  stroke-dasharray: 2px 2px;
+}
+
+.baseline-above {
+  dominant-baseline: auto !important;
+}
+
+.baseline-hanging {
+  dominant-baseline: hanging !important;
+}
+
+.chart-narrow {
+  width: var(--paragraph-width);
+  max-width: var(--paragraph-max-width);
+  min-width: var(--paragraph-min-width);
+}
+
+.chart-mobile {
+  min-width: var(--chart-mobile-min-width);
+}
+
+.chart-wide {
+  width: var(--chart--wide-width);
+  max-width: var(--chart-wide-max-width);
+  min-width: var(--chart-wide-min-width);
 }
 
 .chart-wrapper {
@@ -286,41 +342,45 @@ ol li:before {
 .footnote:before {
   content: "—";
   position: absolute;
-  top: calc(var(--margin) / (-2));
+  top: -15px;
 }
 
-.footnote ul {
-  margin: calc(var(--mini-margin) / 2) 0;
+.footnote ol {
+  padding-left: 0;
 }
 
-.footnote li {
+.footnote ol li {
+  padding-left: 0;
+}
+
+.footnote ol li:before {
+  font-feature-settings: "tnum" 1;
+  left: -28px;
+  text-align: right;
+}
+
+.footnote ol ul {
+  left: -5px;
   margin: 0;
+}
+
+.footnote ol ul li {
+  padding-left: 10px;
 }
 
 .images-row {
   display: flex;
-  gap: calc(var(--mini-margin) / 2);
+  gap: 8px;
   max-width: var(--paragraph-max-width);
   min-width: var(--paragraph-min-width);
   width: var(--paragraph-width);
 }
 
-.legend-text {
-  dominant-baseline: middle;
-  font-size: var(--font-legend-size);
-  font-weight: var(--font-legend-weight);
-}
-
-.line-avg {
-  stroke: var(--text-color);
-  stroke-width: 1.1px;
-}
-
 .massive {
   font-size: clamp(4rem, 5vw, 5rem);
-  line-height: 1;
+  line-height: 1.1;
   letter-spacing: -0.05em;
-  position: relative;
+  top: -20px;
   width: 50vw;
   word-spacing: 0.2em;
 }
@@ -330,36 +390,67 @@ ol li:before {
   visibility: visible;
 }
 
-.options {
-  display: flex;
-  gap: var(--mini-margin);
-}
-
-.options > div {
-  align-items: center;
-  display: flex;
-}
-
-.options > div:hover .check,
-.options > div:hover .checkmark {
-  border-color: var(--accent-color);
-}
-
-.options > div:hover label {
-  color: var(--accent-color);
-}
-
 .pop {
   color: var(--accent-color);
 }
 
-.selector {
-  display: flex;
-  gap: var(--mini-margin);
+.small-text {
+  dominant-baseline: central;
+  font-size: var(--font-legend-size);
+  font-weight: var(--font-legend-weight);
 }
 
-.tick text {
-  font-size: var(--font-legend-size);
+.tiny-text {
+  dominant-baseline: central;
+  font-size: var(--font-tiny-size);
+  font-weight: var(--font-legend-weight);
+  font-feature-settings: "tnum" 1;
+}
+
+.tooltip {
+  background: var(--base-color);
+  border: 1px dotted var(--accent-color);
+  display: flex;
+  font-size: var(--font-tiny-size);
+  flex-direction: column;
+  gap: 2px;
+  opacity: 0;
+  padding: 1em 1.2em;
+  pointer-events: none;
+  position: absolute;
+  text-align: center;
+  width: 160px;
+  z-index: 10;
+}
+
+.bottom-pointer:before {
+  background: var(--base-color);
+  border: 1px dotted var(--accent-color);
+  border-top-color: transparent;
+  border-left-color: transparent;
+  bottom: 0;
+  content: "";
+  height: 12px;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, 50%) rotate(45deg);
+  width: 12px;
+  z-index: 10;
+}
+
+.side-pointer:before {
+  background: var(--base-color);
+  border: 1px dotted var(--accent-color);
+  border-top-color: transparent;
+  border-left-color: transparent;
+  left: 0;
+  content: "";
+  height: 12px;
+  top: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%) rotate(135deg);
+  width: 12px;
+  z-index: 10;
 }
 
 ::-webkit-scrollbar {
@@ -377,11 +468,11 @@ ol li:before {
     left: 0 !important;
     width: 100% !important;
   }
-  #nav-button{
+  #nav-button {
     visibility: visible !important;
   }
-  main p,
-  main header,
+  main :is(p, header, ul, ol),
+  .chart-narrow,
   .footnote,
   .images-row,
   .massive {

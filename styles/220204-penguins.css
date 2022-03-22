@@ -1,0 +1,51 @@
+.axis {
+  color: var(--text-color);
+  opacity: var(--faint-peripherals-opacity);
+}
+
+.axis path,
+.axis line {
+  stroke-dasharray: 2px 2px;
+}
+
+.circle {
+  opacity: var(--faint-dots-opacity);
+}
+
+.circle-avg {
+  fill: var(--base-color);
+  stroke-width: 1.2px;
+}
+
+.line-avg {
+  stroke: var(--text-color);
+  stroke-width: 1.1px;
+}
+
+.options {
+  display: flex;
+  gap: var(--mini-margin);
+}
+
+.options > div {
+  align-items: center;
+  display: flex;
+}
+
+.options > div:hover .check,
+.options > div:hover .checkmark {
+  border-color: var(--accent-color);
+}
+
+.options > div:hover label {
+  color: var(--accent-color);
+}
+
+.selector {
+  display: flex;
+  gap: var(--mini-margin);
+}
+
+.tick text {
+  font-size: var(--font-legend-size);
+}

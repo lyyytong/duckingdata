@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="stylesheet" href="styles/220310-primes.css" />
+    <title>duckingdata</title>
+  </head>
+  <body>
+    <script id="nav-bar" src="scripts/nav.js"></script>
+    <main onclick="bodyOnClick()">
+      <header class="pop">How "prime" are prime numbers?</header>
+      <p>
+        Mathematicians and lay people mean different things when it comes to
+        "prime". In maths, primes are numbers greater than 1 that cannot be
+        divided by any number other than 1 and themselves. 2, 3, 5, 7, 9, and 11
+        are primes. They're "the atoms of number theory, the basic indivisble
+        entities of which all numbers are made"<sup>
+          (<a href="#note-1">1</a>)</sup
+        >, and so occupy a very special place in the world of number theory.
+      </p>
+      <div>
+        <p>
+          On the other hand, in an Asian country with strong Chinese influence
+          (like Vietnam, where I'm from), prime usually means lucky numbers. A
+          number is lucky if it's made up of lucky digits, which are those when
+          pronounced in Mandarin or Cantonese sound like a good word:
+        </p>
+        <ul>
+          <li>9 sounds like "longevity" 🖖</li>
+          <li>8 "prosperity" 💸</li>
+          <li>6 "happiness", "fortune" 🍀</li>
+          <li>2 "easy", "bright" 🏄‍♀️</li>
+          <li>0 "good" 👶</li>
+        </ul>
+        <p>
+          4 sounds like "death" — the most unlucky number. 1, 3, 5, 7 could
+          sound like many things, and so their meaning depends on context, or
+          the pairing with other digits.
+        </p>
+      </div>
+      <p>
+        In Vietnam, a numbered asset that contains many 9s and 8s sees its price
+        increased significantly, sometimes jacked up to astronomical range: in
+        2018, the phone number 0989999999 was bought for 19 billion VND (around
+        819,000 USD at the time)<sup>(<a href="#note-2">2</a>)</sup>.
+      </p>
+      <p>
+        Let's assume now that good numbers really do breed good deeds<sup
+          >(<a href="#note-3">3</a>)</sup
+        >. What if you're a business person in Vietnam who, in the race to the
+        lonely top, aspires for mathematical elegance?
+      </p>
+      <p>
+        The good news is primes greater than 2 are all odd numbers (by
+        definition they cannot be divisible by 2), which means that by choosing
+        a lucky number that's also a prime, you've cut down the competing
+        possibilities by at least half. This makes your number at least twice as
+        rare.
+      </p>
+      <p>
+        Even better: primes other than 5 cannot be divisible by 5, further
+        removing from competition all longer numbers ending with 5. Beter than
+        better: primes appear a bit less often as we move into bigger numbers.
+        Below is a histogram that shows
+        <mark>the decreasing occurence of primes</mark
+        ><sup>(<a href="#note-4">4</a>)</sup>
+        that are smaller than one billion.
+      </p>
+      <div class="chart-wrapper">
+        <div id="chart1" class="chart-narrow">
+          <div class="tooltip bottom-pointer">
+            <div class="number pop"></div>
+            <div class="desc">
+              <div>
+                <div>between</div>
+                <div><span class="start"></span></div>
+              </div>
+              <div>
+                <div>and</div>
+                <div><span class="stop"></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p>
+        So the bigger the prime, the rarer it is. Rare is good, but we also want
+        our pick at the lucky digits. And luckily, by counting
+        <mark
+          >the occurrence of each digit in the more than 50 million primes</mark
+        >
+        under one billion, we can see that lucky digits are in good supply.
+        Especially if you're flexible with the digits' position in your long
+        number.
+      </p>
+      <div class="chart-wrapper">
+        <div id="chart2" class="chart-narrow">
+          <div class="tooltip bottom-pointer">
+            <div>The digit <span class="digit pop"></span> appears</div>
+            <div>
+              <span class="count pop"></span> times
+              <span class="position-sub-text">in</span>
+            </div>
+            <div class="position-container">
+              <span class="position pop"></span> position
+            </div>
+          </div>
+        </div>
+      </div>
+      <p>
+        However, the sense that a number belongs to you doesn't just come from
+        its digits, it's also the pattern they form and what special meanings it
+        has. Of more than 50 million primes, there's actually
+        <mark>a good amount that contain very premium looking patterns</mark>,
+        like 888, 999, and 123123. (Or 6969. There's something for everyone.)
+      </p>
+      <div class="chart-wrapper">
+        <div id="chart3" class="chart-mobile">
+          <div class="tooltip side-pointer"></div>
+        </div>
+      </div>
+      <p>
+        Let's now explore our lucky primes. To avoid the browser choking on
+        itself, I've applied a set of arbitrary rules<sup
+          >(<a href="#note-5">5</a>)</sup
+        >
+        to reduce the 50 million primes down to just 3.3 million — some of the
+        most premium and lucky — displayed accross
+        <span class="page-num"></span> pages. Input your favorite digit or
+        pattern to see the pages that contain your lucky numbers.
+      </p>
+      <div id="chart4" class="chart-narrow">
+        <div class="primes-filter">
+          <div class="tiny-text">Choose filter</div>
+          <div>
+            I want primes containing
+            <input
+              type="text"
+              name="digit"
+              id="filter-input"
+              value="88"
+              placeholder="88"
+            /><text class="alert"
+              ><br />No results found. Please try another.</text
+            >
+          </div>
+        </div>
+        <div class="primes-pages">
+          <div class="tiny-text">Choose page</div>
+          <div>
+            <div class="pages"></div>
+            <div class="page-desc tiny-text">
+              <div class="desc">
+                <div>
+                  <div>Contains <span class="pattern"></span></div>
+                  <div class="has-pattern"></div>
+                </div>
+                <div>
+                  <div>Page</div>
+                  <div class="page-num"></div>
+                </div>
+                <div>
+                  <div>No. of primes</div>
+                  <div class="count"></div>
+                </div>
+                <div>
+                  <div>Min. prime</div>
+                  <div class="start"></div>
+                </div>
+                <div>
+                  <div>Max. prime</div>
+                  <div class="stop"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="notes small-text">
+            Bigger page numbers have bigger primes.
+            <span class="pop">Bluer pages</span> have more primes that match the
+            filter.<br /><br />🌱 are primes that don't match the filter.
+          </div>
+        </div>
+      </div>
+      <div class="primes-wrapper"></div>
+      <div class="footnote">
+        <ol>
+          <li id="note-1">
+            Ellenberg, J (2015). How Not To Be Wrong, The Power of Mathematical
+            Thinking. Penguin.
+          </li>
+          <li id="note-2">
+            Siêu sim 0989999999 vừa được sang tay giá gần triệu USD. (2018,
+            August 30). Vietnamnet.
+            <a
+              href="https://vietnamnet.vn/vn/kinh-doanh/thi-truong/sieu-sim-0989999999-vua-duoc-sang-tay-gia-gan-trieu-usd-474080.html"
+              target="_blank"
+              >https://vietnamnet.vn</a
+            >
+          </li>
+          <li id="note-3">
+            Numerology isn't compatible with my beliefs, but I also
+            believe that placebo effect is real. So much of our daily life is
+            influenced by personal prejudice that it's probably safe to assume
+            numerology can have a real effect, at least in the domain of human
+            activities.
+          </li>
+          <li id="note-4">
+            Generated with codes from
+            <a
+              href="https://www.geeksforgeeks.org/python-program-for-sieve-of-eratosthenes/#:~:text=The%20Sieve%20of%20Eratosthenes%20is,to%20is%20prime%20or%20composite."
+              target="_blank"
+              >GeeksforGeeks</a
+            >, based on the Sieve of Eratosthenes.
+          </li>
+          <li id="note-5">
+            The rules were:
+            <ul>
+              <li>
+                Primes with at least 6 successive repetition of a digit must
+                contain 8 or 9
+              </li>
+              <li>
+                Primes with 3 to 6 repetition of a digit must contain both 8 and
+                9
+              </li>
+              <li>
+                Primes with patterns like 123123 must contain both 8 and 9, and
+                at least one of 0, 2, 6
+              </li>
+              <li>
+                Primes with only a pair or a year must have both 8 and 9, and at
+                least two of 0, 2, 6
+              </li>
+            </ul>
+          </li>
+        </ol>
+        <p>
+          <span class="pop">Tech Stack</span>
+          <br />Data analysis: Python (Pandas, Regex, Matplotlib, Seaborn)
+          <br />Visualization: Javascript (D3.js), HTML, CSS
+        </p>
+      </div>
+    </main>
+  </body>
+  <script src="scripts/d3.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prime-functions/index.min.js"></script>
+  <script src="scripts/220310-primes.js"></script>
+</html>

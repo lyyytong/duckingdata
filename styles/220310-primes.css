@@ -1,0 +1,245 @@
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#chart4 {
+  margin-bottom: 0;
+}
+
+.bar {
+  fill: blue;
+  opacity: var(--faint-dots-opacity);
+  stroke: var(--base-color);
+}
+
+.demo-digit {
+  dominant-baseline: hanging;
+  fill: var(--accent-color);
+  font-size: 40px;
+  font-feature-settings: "tnum" 1;
+  font-weight: 400;
+  opacity: 0.15;
+  text-anchor: middle;
+}
+
+.demo-line {
+  opacity: 0.2;
+}
+
+.demo-position {
+  dominant-baseline: auto;
+  font-size: var(--font-tiny-size);
+  font-feature-settings: "tnum" 1;
+  text-anchor: middle;
+}
+
+.demo-position-text {
+  fill: var(--accent-color);
+  text-anchor: end;
+  transform: rotate(-90deg);
+  opacity: 0.2;
+}
+
+.digit-rect {
+  fill: transparent;
+  cursor: default;
+}
+
+.floating-text {
+  line-height: 1.2;
+  position: absolute;
+  z-index: 10;
+}
+
+.heat-rect {
+  stroke: var(--base-color);
+}
+
+.heat-text {
+  text-anchor: middle !important;
+  pointer-events: none;
+}
+
+.hightlight-rect {
+  fill: var(--accent-color);
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+.hover-rect {
+  fill: var(--accent-color);
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+.in-rect-text {
+  dominant-baseline: central;
+  fill: var(--base-color);
+  font-size: var(--font-tiny-size);
+  font-feature-settings: "tnum" 1;
+}
+
+.lighten-mask {
+  fill: var(--base-color);
+  mix-blend-mode: lighten;
+  opacity: 0.8;
+}
+
+.million-marks {
+  dominant-baseline: central;
+  fill: var(--accent-color);
+  opacity: 0.6;
+}
+
+.notes,
+.page-desc {
+  gap: 20px;
+  margin-top: 5px;
+  position: absolute;
+}
+
+.notes {
+  right: -190px;
+  top: -6px;
+  width: 170px;
+}
+
+.pages {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.pages text {
+  color: silver;
+  font-size: var(--font-tiny-size);
+}
+
+.page {
+  cursor: pointer;
+  font-size: var(--font-legend-size);
+  padding: 0 2px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.page:hover {
+  animation: rotate 3s infinite ease;
+  background: blue;
+  color: var(--base-color) !important;
+}
+
+.page-selected {
+  background: blue;
+  color: var(--base-color) !important;
+}
+
+.page-desc {
+  bottom: 0;
+  right: -180px;
+  visibility: hidden;
+  width: 160px;
+}
+
+.page-desc .desc {
+  flex: 0 0 15em;
+}
+
+.page-desc .has-pattern {
+  background: blue;
+  color: var(--base-color);
+  font-size: var(--font-main-size);
+  padding: 0px 5px;
+}
+
+.primes-filter {
+  display: flex;
+  align-items: flex-start;
+}
+
+.primes-filter div:first-child {
+  flex: 0 0 8em;
+  top: 5px;
+}
+
+.primes-filter input[type="text"] {
+  background: var(--base-color);
+  border: none;
+  border-bottom: 1px solid var(--accent-color);
+  font-size: var(--font-main-size);
+  font-feature-settings: "tnum" 1;
+  outline: none;
+  text-align: center;
+  width: 70px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.primes-filter .alert {
+  color: #fe4a49;
+  display: none;
+}
+
+.primes-pages {
+  display: flex;
+  align-items: flex-start;
+}
+
+.primes-pages > div:first-child {
+  flex: 0 0 8em;
+}
+
+.primes-wrapper {
+  display: none;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 3px;
+}
+
+.primes-wrapper text {
+  color: var(--text-color);
+  font-size: var(--font-tiny-size);
+  font-feature-settings: "tnum" 1;
+  line-height: 1.2;
+}
+
+.tooltip :is(.number, .start, .stop, .count, .digit, .position) {
+  font-feature-settings: "tnum" 1;
+}
+
+.tooltip .number {
+  font-size: var(--font-legend-size);
+  margin-bottom: 3px;
+}
+
+:is(.tooltip, .page-desc) .desc > * {
+  align-items: flex-end;
+  display: flex;
+  font-feature-settings: "tnum" 1;
+  justify-content: space-between;
+  margin: 2px 0;
+}
+
+.to-zoom {
+  pointer-events: none;
+  transition: all 0.3s ease-out;
+}
+
+.zoom-rect {
+  fill: transparent;
+  opacity: 0.2;
+  stroke: var(--text-color);
+  stroke-dasharray: 2px 2px;
+  transition: all 0.3s ease-out;
+}
+
+.zoom-rect-text {
+  fill: silver;
+  pointer-events: none;
+}

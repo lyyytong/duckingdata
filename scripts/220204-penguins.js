@@ -15,7 +15,7 @@ async function drawChart() {
         dataset.push(object)
     })
     
-    const width = +d3.select('#chart').style('width').slice(0, -2)
+    const width = +d3.select('#chart1').style('width').slice(0, -2)
     let dimensions = {
         width: width,
         height: width/2,
@@ -23,13 +23,13 @@ async function drawChart() {
             top: 10,
             right: 10,
             bottom: 10,
-            left: width/6
+            left: width/5
         },
     }
     dimensions.boundedWidth = dimensions.width - dimensions.margins.left - dimensions.margins.right
     dimensions.boundedHeight = dimensions.height - dimensions.margins.top - dimensions.margins.bottom
 
-    const wrapper = d3.select('#chart')
+    const wrapper = d3.select('#chart1')
         .append('svg')
         .attr('width', dimensions.width)
         .attr('height', dimensions.height)
@@ -48,7 +48,7 @@ async function drawChart() {
 
     const genderScale = d3.scaleOrdinal()
         .domain(['MALE', 'FEMALE'])
-        .range(['#0000d8', '#268C07'])
+        .range(['blue', 'green'])
     const culmenLengthScale = d3.scaleLinear()
         .domain([
             d3.min(dataset, culmenLengthAccessor)*.95,
@@ -99,15 +99,12 @@ async function drawChart() {
     charts.forEach(chart => {
         const chartPosition = chartScale(chart.name)
         const chartName = chart.name.slice(0, -5).replace(' ', '-').toLowerCase()
-
-        const allMaleAvg = d3.mean(dataset.filter(d => d.gender=='MALE'), chart.accessor)
-        const allFemaleAvg = d3.mean(dataset.filter(d => d.gender=='FEMALE'), chart.accessor)
         
         bounds.append('g').attr('class', `circle-group ${chartName}`)
         bounds.append('g').attr('class', `avg-group ${chartName}`)
 
         bounds.append('text')
-            .attr('class', 'legend-text')
+            .attr('class', 'small-text')
             .text(chart.name)
             .attr('x', chartPosition)
             .style('opacity', .2)
@@ -117,12 +114,12 @@ async function drawChart() {
             .attr('class', `${chartName} outliers`)
             .style('opacity', 0)
         outliersGroup.append('text')
-            .attr('class', `legend-text`)
+            .attr('class', `small-text`)
             .text('Removed:')
             .attr('x', chartPosition)
             .attr('y', 20)
         outliersGroup.append('text')
-            .attr('class', `legend-text removed`)
+            .attr('class', `small-text removed`)
             .attr('x', chartPosition)
             .attr('y', 40)
 
@@ -139,8 +136,8 @@ async function drawChart() {
             .style('transform', `translateX(${chartPosition+chartWidth}px)`)
     })
 
-    const options = d3.selectAll('#chart input[type=radio]').on('click', onOptionChange)
-    const optionOutliers = d3.select('#chart input[type=checkbox]').on('click', onOptionChange)
+    const options = d3.selectAll('#chart1 input[type=radio]').on('click', onOptionChange)
+    const optionOutliers = d3.select('#chart1 input[type=checkbox]').on('click', onOptionChange)
     let selected = options.filter(':checked').attr('id')
     let excludeOutliers = optionOutliers.filter(':checked')
     updateChart()
@@ -226,9 +223,9 @@ async function drawChart() {
                     .attr('cy', chart.scale(averages[gender]))
             }
             
-            let avgText = avgGroup.select(`.legend-text.gender-gap`)
+            let avgText = avgGroup.select(`.small-text.gender-gap`)
             if (avgText.empty()) avgText = avgGroup.append('text')
-                .attr('class', `legend-text gender-gap`)
+                .attr('class', `small-text gender-gap`)
                 .attr('x', circlesPosition+5)
                 .attr('y', dimensions.boundedHeight)
                 .style('text-anchor', 'start')
@@ -236,9 +233,9 @@ async function drawChart() {
                 .text(d3.format('.1%')(maleAvg/femaleAvg-1))
                 .attr('y', chart.scale(d3.sum([maleAvg, femaleAvg])/2))
 
-            let caption = avgGroup.select('.legend-text.caption')
+            let caption = avgGroup.select('.small-text.caption')
             if (caption.empty()) caption = avgGroup.append('text')
-                .attr('class', 'legend-text caption')
+                .attr('class', 'small-text caption')
                 .attr('x', chartPosition)
                 .attr('y', dimensions.boundedHeight)
             caption.text(d3.format('.1%')(maleAvg/femaleAvg-1) + chart.text)
@@ -266,7 +263,7 @@ async function drawChart() {
         .attr('y1', 80)
         .attr('y2', 180)
     legendGroup.append('text')
-        .attr('class', 'legend-text')
+        .attr('class', 'small-text')
         .text('% difference')
         .attr('x', 15)
         .attr('y', 130)
@@ -279,7 +276,7 @@ async function drawChart() {
             .attr('cy', 30+i*25)
             .style('opacity', .9)
         legendGroup.append('text')
-            .attr('class', 'legend-text')
+            .attr('class', 'small-text')
             .text(gender.slice(0, 1) + gender.slice(1).toLowerCase())
             .attr('x', 15)
             .attr('y', 30+i*25)
@@ -293,16 +290,16 @@ async function drawChart() {
                 ? genderScale.range()[0]
                 : genderScale.range()[1])
         legendGroup.append('text')
-            .attr('class', 'legend-text')
+            .attr('class', 'small-text')
             .text(gender.slice(0, 1) + gender.slice(1).toLowerCase() + ' Average')
             .attr('x', 15)
             .attr('y', 80 + i*100)
         legendGroup.append('text')
-            .attr('class', 'legend-text')
+            .attr('class', 'small-text')
             .attr('y', dimensions.boundedHeight-20)
             .text('On average,')
         legendGroup.append('text')
-            .attr('class', 'legend-text')
+            .attr('class', 'small-text')
             .attr('y', dimensions.boundedHeight)
             .text('males have/is...')
     })
