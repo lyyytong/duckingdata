@@ -50,8 +50,8 @@
       <p>
         Let's assume now that good numbers really do breed good deeds<sup
           >(<a href="#note-3">3</a>)</sup
-        >. What if you're a business person in Vietnam who, in the race to the
-        lonely top, aspires for mathematical elegance?
+        >. What if you're a business person in Vietnam who, in the race for rare
+        success, aspires for mathematical elegance?
       </p>
       <p>
         The good news is primes greater than 2 are all odd numbers (by
@@ -62,12 +62,12 @@
       </p>
       <p>
         Even better: primes other than 5 cannot be divisible by 5, further
-        removing from competition all longer numbers ending with 5. Beter than
-        better: primes appear a bit less often as we move into bigger numbers.
-        Below is a histogram that shows
+        removing from competition all longer numbers ending with 5. Even better
+        than better: primes appear a bit less often as we move into bigger
+        numbers. Below is a histogram that shows
         <mark>the decreasing occurence of primes</mark
         ><sup>(<a href="#note-4">4</a>)</sup>
-        that are smaller than one billion.
+        smaller than one billion.
       </p>
       <div class="chart-wrapper">
         <div id="chart1" class="chart-narrow">
@@ -87,14 +87,15 @@
         </div>
       </div>
       <p>
-        So the bigger the prime, the rarer it is. Rare is good, but we also want
-        our pick at the lucky digits. And luckily, by counting
+        So the bigger the prime, the rarer it is, and rare is good (I doubt
+        anyone would pay as much for something everyone else can have). Now, we
+        also want our pick at the lucky digits — the more 8s and 9s the better.
+        Luckily, by counting
         <mark
           >the occurrence of each digit in the more than 50 million primes</mark
         >
         under one billion, we can see that lucky digits are in good supply.
-        Especially if you're flexible with the digits' position in your long
-        number.
+        Especially if you're flexible with their position in your long number.
       </p>
       <div class="chart-wrapper">
         <div id="chart2" class="chart-narrow">
@@ -112,8 +113,9 @@
       </div>
       <p>
         However, the sense that a number belongs to you doesn't just come from
-        its digits, it's also the pattern they form and what special meanings it
-        has. Of more than 50 million primes, there's actually
+        its digits, it's also the pattern they form, how rare it is, and what
+        special meanings it has. Of more than 50 million primes, there's
+        actually
         <mark>a good amount that contain very premium looking patterns</mark>,
         like 888, 999, and 123123. (Or 6969. There's something for everyone.)
       </p>
@@ -122,6 +124,16 @@
           <div class="tooltip side-pointer"></div>
         </div>
       </div>
+      <p>
+        To sum it up, it seems to me that when we apply both definitions of
+        "prime" — the mathematical and Chinese numerological, we end up with
+        pretty interesting numbers. The properties of primes boost their rarity,
+        without restricting our choice in lucky digits and patterns. After all,
+        if our Vietnamese business(wo)man is going to pay big bucks for it, why
+        not add an extra layer of meaning to further justify the cost? I've
+        never heard of a lucky charm, collector's item, or artwork having too
+        much meaning.
+      </p>
       <p>
         Let's now explore our lucky primes. To avoid the browser choking on
         itself, I've applied a set of arbitrary rules<sup
@@ -132,55 +144,58 @@
         <span class="page-num"></span> pages. Input your favorite digit or
         pattern to see the pages that contain your lucky numbers.
       </p>
-      <div id="chart4" class="chart-narrow">
-        <div class="primes-filter">
-          <div class="tiny-text">Choose filter</div>
-          <div>
-            I want primes containing
-            <input
-              type="text"
-              name="digit"
-              id="filter-input"
-              value="88"
-              placeholder="88"
-            /><text class="alert"
-              ><br />No results found. Please try another.</text
-            >
+      <div class="chart-wrapper">
+        <div id="chart4" class="chart-narrow">
+          <div class="primes-filter">
+            <div class="tiny-text">Choose filter</div>
+            <div>
+              I want primes containing
+              <input
+                type="text"
+                name="digit"
+                id="filter-input"
+                value="88"
+                placeholder="88"
+              /><text class="alert"
+                ><br /><span class="alert-text">No results found.</span> Please
+                try another.</text
+              >
+            </div>
           </div>
-        </div>
-        <div class="primes-pages">
-          <div class="tiny-text">Choose page</div>
-          <div>
-            <div class="pages"></div>
-            <div class="page-desc tiny-text">
-              <div class="desc">
-                <div>
-                  <div>Contains <span class="pattern"></span></div>
-                  <div class="has-pattern"></div>
-                </div>
-                <div>
-                  <div>Page</div>
-                  <div class="page-num"></div>
-                </div>
-                <div>
-                  <div>No. of primes</div>
-                  <div class="count"></div>
-                </div>
-                <div>
-                  <div>Min. prime</div>
-                  <div class="start"></div>
-                </div>
-                <div>
-                  <div>Max. prime</div>
-                  <div class="stop"></div>
+          <div class="primes-pages">
+            <div class="tiny-text">Choose page</div>
+            <div>
+              <div class="pages"></div>
+              <div class="page-desc small-text">
+                <div class="desc">
+                  <div>
+                    <div>Contains <span class="pattern"></span></div>
+                    <div class="has-pattern"></div>
+                  </div>
+                  <div>
+                    <div>Page</div>
+                    <div class="page-num"></div>
+                  </div>
+                  <div>
+                    <div>No. of primes</div>
+                    <div class="count"></div>
+                  </div>
+                  <div>
+                    <div>Min. prime</div>
+                    <div class="start"></div>
+                  </div>
+                  <div>
+                    <div>Max. prime</div>
+                    <div class="stop"></div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="notes small-text">
-            Bigger page numbers have bigger primes.
-            <span class="pop">Bluer pages</span> have more primes that match the
-            filter.<br /><br />🌱 are primes that don't match the filter.
+            <div class="notes small-text">
+              Bigger page numbers have bigger primes.
+              <span class="pop">Bluer pages</span> have more primes that match
+              the filter.<br /><br />🌱 are primes that don't match the filter.
+            </div>
           </div>
         </div>
       </div>
@@ -201,11 +216,10 @@
             >
           </li>
           <li id="note-3">
-            Numerology isn't compatible with my beliefs, but I also
-            believe that placebo effect is real. So much of our daily life is
-            influenced by personal prejudice that it's probably safe to assume
-            numerology can have a real effect, at least in the domain of human
-            activities.
+            Numerology isn't compatible with my beliefs, but I also believe that
+            placebo effect is real. So much of our daily life is influenced by
+            personal prejudice that it's probably safe to assume numerology can
+            have a real effect, at least in the domain of human activities.
           </li>
           <li id="note-4">
             Generated with codes from
