@@ -1,0 +1,251 @@
+@keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+}
+
+.annotation-line-dotted {
+    stroke-width: .5;
+}
+
+.area {
+    opacity: .6;
+    stroke-width: .5;
+}
+
+.area-baseline {
+    mix-blend-mode: color-dodge;
+    opacity: .7;
+    stroke: #e7dae7;
+}
+
+.area-name {
+    opacity: .2;
+}
+
+#area-name-path {
+    stroke: none;
+    transform: rotate(20deg);
+}
+
+#chart2 {
+    margin-top: var(--mini-margin);
+}
+
+.chart-wrapper.vertical-flex {
+    flex-direction: column;
+}
+
+.continent-name {
+    opacity: .7;
+}
+
+.continent-data {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.cumsum-area {
+    opacity: .3;
+    stroke: none;
+}
+
+.cumsum-area-name {
+    opacity: .2;
+}
+
+#cumsum-name-path {
+    stroke: none;
+    transform: rotate(-65deg);
+}
+
+.faint-text {
+    opacity: .25;
+}
+
+.first-seen-line {
+    stroke-width: .5;
+}
+
+.genus-area {
+    opacity: .5;
+    stroke: none;
+}
+
+.genus-area-cumsum {
+    opacity: .4;
+    stroke: none;
+}
+
+.genus-grid {
+    stroke: gainsboro;
+    stroke-width: .4;
+}
+
+.grid-line {
+    opacity: .4;
+    stroke: thistle;
+}
+
+.genus-pic {
+    border-radius: 2%;
+    filter: sepia(20%);
+    margin: 5px 0 10px 0;
+}
+
+.genus-profile {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    opacity: 0;
+}
+
+.genus-profile .source {
+    position: absolute;
+    right: -20px;
+    top: 25px;
+}
+
+#hover-arc {
+    fill: blue;
+    pointer-events: none;
+    stroke: none;
+}
+
+.hover-group {
+    opacity: 0;
+}
+
+.hover-rect {
+    fill: blue;
+    opacity: .1;
+    pointer-events: none;
+}
+
+.hover-species-num {
+    fill: blue;
+}
+
+.hover-year {
+    dominant-baseline: central;
+    fill: var(--text-color);
+    font-feature-settings: 'tnum' 1;
+    font-size: 24px;
+    opacity: .8;
+}
+
+.legend-groups {
+    opacity: 0;
+}
+
+.listening-circle {
+    fill: transparent;
+}
+
+.listening-rect {
+    fill: transparent;
+}
+
+.radial-background {
+    mix-blend-mode: darken;
+    opacity: .2;
+}
+
+.radial-inner-background {
+    fill: var(--base-color);
+}
+
+.selector {
+    display: flex;
+    flex-direction: column;
+    margin-top: var(--mini-margin);
+    gap: var(--mini-margin);
+}
+
+.selector > * {
+    display: flex;
+    gap: 20px;
+}
+
+.selector > div > text {
+    flex: 0 0 100px;
+    top: 3px;
+    text-align: right;
+}
+
+.selector select {
+    background: var(--base-color);
+    border: none;
+    cursor: pointer;
+    height: 21px;
+    font-size: var(--font-main-size);
+    outline: none;
+    padding: 0 1px;
+    text-align:left;
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.sorting {
+    display: flex;
+    gap: var(--margin);
+}
+
+.sorting label {
+    left: -10px;
+}
+
+.sorting :is(.check) {
+    left: 0;
+    bottom: 7px;
+}
+
+.tick-grid {
+    fill: none;
+    mix-blend-mode: darken;
+    opacity: .4;
+    stroke: thistle;
+}
+
+.tick-label {
+    opacity: .2;
+}
+
+.title {
+    dominant-baseline: central;
+    opacity: .9;
+    pointer-events: none;
+}
+
+.tooltip {
+    border: .5px solid var(--accent-color);
+    border-radius: 2%;
+    width: 155px;
+}
+
+.bottom-pointer:before {
+    border: .5px solid var(--accent-color);
+    border-top-color: transparent;
+    border-left-color: transparent;
+}
+
+.tooltip .year {
+    font-size: var(--font-main-size);
+    font-feature-settings: 'tnum' 1;
+    /* opacity: .9; */
+}
+
+.tooltip > div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.x-axis {
+    stroke-width: .5;
+}

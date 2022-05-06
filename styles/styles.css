@@ -28,9 +28,9 @@ html {
   --padding: 40px;
   --mini-padding: 10px;
   --nav-width: 380px;
-  --paragraph-width: 40vw;
+  --paragraph-width: 38vw;
   --paragraph-width-mobile: 70vw;
-  --paragraph-max-width: 700px;
+  --paragraph-max-width: 650px;
   --paragraph-min-width: 300px;
   --chart-mobile-min-width: 600px;
   --chart--wide-width: 60vw;
@@ -159,6 +159,10 @@ nav a {
   text-decoration: none;
 }
 
+nav li {
+  line-height: 1.6;
+}
+
 nav li:hover,
 nav li:hover a {
   color: var(--accent-color) !important;
@@ -227,7 +231,7 @@ svg {
   flex-direction: column;
   height: auto;
   gap: var(--mini-margin);
-  margin: var(--margin) 0;
+  /* margin: var(--margin) 0; */
 }
 
 #nav-button {
@@ -282,8 +286,13 @@ svg {
   dominant-baseline: auto !important;
 }
 
+.baseline-middle {
+  dominant-baseline: central !important;
+}
+
 .baseline-hanging {
   dominant-baseline: hanging !important;
+  color: #e0dedc;
 }
 
 .chart-narrow {
@@ -305,6 +314,7 @@ svg {
 .chart-wrapper {
   display: flex;
   justify-content: flex-start;
+  margin: var(--margin) 0;
   max-width: 100vw;
   overflow-x: scroll;
   width: 100%;
@@ -340,7 +350,7 @@ svg {
 }
 
 .footnote:before {
-  content: "—";
+  content: "——";
   position: absolute;
   top: -15px;
 }
@@ -376,13 +386,31 @@ svg {
   width: var(--paragraph-width);
 }
 
-.massive {
-  font-size: clamp(4rem, 5vw, 5rem);
-  line-height: 1.1;
-  letter-spacing: -0.05em;
-  top: -20px;
-  width: 50vw;
-  word-spacing: 0.2em;
+.massive-home {
+  opacity: .15;
+}
+
+.massive-home :is(a, header, p) {
+  color: var(--accent-color);
+  font-size: clamp(3rem, 3vw, 5rem);
+  font-weight: 400;
+  letter-spacing: -0.05rem;
+  line-height: 1.2;
+  max-width: none;
+  top: -10px;
+  width: calc(100vw - var(--nav-width) - var(--padding)*4);
+  word-spacing: .1em;
+}
+
+.massive-home a {
+  text-decoration: none;
+  top: 0;
+}
+
+.massive-home sup {
+  font-size: clamp(1rem, 1vw, 2rem);
+  letter-spacing: normal;
+  top: -10px;
 }
 
 .open-menu {
@@ -477,5 +505,8 @@ svg {
   .images-row,
   .massive {
     width: var(--paragraph-width-mobile);
+  }
+  .massive-home :is(a, header, p) {
+    width: calc(100vw - var(--padding)*4);
   }
 }

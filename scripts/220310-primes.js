@@ -6,11 +6,11 @@ async function drawHistogram() {
   const width = d3.min([+chart.style("width").slice(0, -2), 600]);
   let dimensions = {
     width: width,
-    height: width * 0.6,
+    height: width * 0.7,
     margins: {
-      top: 0,
+      top: 20,
       right: 15,
-      bottom: 0,
+      bottom: 20,
       left: 15,
     },
   };
@@ -23,7 +23,7 @@ async function drawHistogram() {
     .select("#chart1")
     .append("svg")
     .attr("width", dimensions.width)
-    .attr("height", dimensions.height);
+    .attr("height", dimensions.height)
 
   const bounds = wrapper.append("g").style(
     "transform",
@@ -126,7 +126,7 @@ async function drawHistogram() {
   histBars.on("mouseenter", onMouseEnter).on("mouseleave", onMouseLeave);
   const tooltip = d3.select("#chart1 .tooltip");
   function onMouseEnter() {
-    const rect = d3.select(this).style("opacity", 1);
+    const rect = d3.select(this).style("opacity", .8);
     const datum = rect.datum();
 
     tooltip.select(".number").text(`${d3.format(",")(datum.count)} primes`);
@@ -141,10 +141,12 @@ async function drawHistogram() {
     let y = yScale(datum.count) + dimensions.margins.top;
 
     const tooltipWidth = +tooltip.style("width").slice(0, -2);
+    const tooltipHeight = +tooltip.style('height').slice(0, -2)
     const leftPos = -tooltipWidth / 2 + x;
+    const topPos = -tooltipHeight-8 + y
 
     tooltip.style("opacity", 1);
-    if (leftPos >= 0) {
+    if (leftPos >= 0 && topPos >= 0) {
       tooltip
         .classed("bottom-pointer", true)
         .classed("side-pointer", false)
@@ -172,7 +174,7 @@ async function drawHistogram() {
   }
   function onMouseLeave() {
     tooltip.style("opacity", 0);
-    d3.select(this).style("opacity", 0.15);
+    d3.select(this).style("opacity", 0.2);
   }
 }
 drawHistogram();
@@ -190,18 +192,17 @@ async function drawHeatmap() {
   const chart = d3.select("#chart2");
 
   const width = d3.max([600, +chart.style("width").slice(0, -2)]);
-
   if (width == 600)
     chart.classed("chart-narrow", false).classed("chart-mobile", true);
 
-  const height = d3.min([width * 0.9, 700]);
+  const height = d3.min([width, 700]);
   let dimensions = {
     width: width,
     height: height,
     margins: {
-      top: 50,
+      top: 80,
       right: 180,
-      bottom: 180,
+      bottom: 200,
       left: 65,
     },
   };
@@ -282,7 +283,7 @@ async function drawHeatmap() {
     .text("Number of occurences (in millions)")
     .attr("class", "small-text baseline-above align-right")
     .attr("x", annotationPos + 25)
-    .attr("y", -40);
+    .attr("y", -50);
   axes
     .append("path")
     .attr("class", "annotation-line-dotted")
@@ -290,7 +291,7 @@ async function drawHeatmap() {
       const line = d3.line();
       const xPos = annotationPos - 5;
       const xPos2 = dimensions.boundedWidth;
-      const topYPos = -33;
+      const topYPos = -43;
       const bottomYPos = rectHeight * 1.5;
       const points = [
         [xPos, topYPos],
@@ -411,7 +412,7 @@ async function drawHeatmap() {
     .range([leftDistance + textWidth, leftDistance]);
   const digitWidth = demoTextScale.bandwidth();
 
-  const textPos = dimensions.margins.bottom - 110;
+  const textPos = dimensions.margins.bottom*.35;
   legends
     .selectAll(".demo-digit")
     .data(placeValues)
@@ -510,7 +511,7 @@ async function drawHeatmap() {
     .on("mouseleave", rectOnMouseLeave);
 
   const tooltip = d3.select("#chart2 .tooltip");
-  function rectOnMouseEnter(datum) {
+  function rectOnMouseEnter() {
     const rect = d3.select(this);
     const digit = +rect
       .attr("class")

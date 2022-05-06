@@ -4,10 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="A data vis blog of mundane questions.">
-    <meta name="keywords" content="Data Visualization, Data Analysis, D3, Penguins">
+    <meta name="description" content="A data vis blog of mundane questions." />
+    <meta
+      name="keywords"
+      content="Data Visualization, Data Analysis, D3, Penguins"
+    />
     <link rel="stylesheet" href="styles/styles.css" />
-    <link rel="stylesheet" href="styles/220204-penguins.css">
+    <link rel="stylesheet" href="styles/220204-penguins.css" />
     <title>duckingdata</title>
   </head>
   <body>
@@ -15,18 +18,26 @@
     <main onclick="bodyOnClick()">
       <header class="pop">What makes a manly penguin?</header>
       <p>
-        In humans, what makes a man noticeably different from the opposite sex
-        seems to make him more appealing. Physical features like the broad
-        shoulders, square jaws, and superior height appear often as qualifiers
-        of (stereotypical) manliness.
+        In humans, what makes a man visibly different from the opposite sex also
+        makes him more appealing. Features like the broad shoulders, square
+        jaws, and towering height form the picture of (stereotypical) manliness.
+        I wanted to see if there are equivalents for penguins — telltale signs
+        of masculinity in these round, cushy waddling birds.
       </p>
       <p>
-        I wanted to see if there are equivalents for penguins — visible features
-        whose size signals strong masculinity. The below visualization was made
-        from a dataset<sup>(<a href="#note-1">1</a>)</sup> of body measurements
-        from 333<sup>(<a href="#note-2">2</a>)</sup>
+        (I also just wanted an excuse to start this blog. The Palmer penguin
+        data<sup>(<a href="#note-1">1</a>)</sup> is one of those ABC intro
+        materials you're very likely to come across, if you're trying to learn
+        anything data related. I thought this would be an interesting way to
+        rediscover such a familiar dataset.)
+      </p>
+      <p>
+        The below visualization shows body measurements of 333<sup
+          >(<a href="#note-2">2</a>)</sup
+        >
         brush-tailed (also called rump-legged, or Pygoscelis) penguins,
-        including the Adélie, Chinstrap, and Gentoo species.
+        including the Adélie, Chinstrap, and Gentoo species — the 3 most
+        commonly seen species accross the Antarctic Peninsula.
       </p>
       <div class="images-row">
         <figure>
@@ -42,42 +53,42 @@
           <figcaption>Gentoo</figcaption>
         </figure>
       </div>
-     <div class="chart-wrapper">
-       <div id="chart1" class="chart-wide">
-         <div class="selector">
-           <text>Choose species</text>
-           <div class="options">
-             <div>
-               <input
-                 type="radio"
-                 id="Adelie"
-                 name="selector"
-                 checked="checked"
-               />
-               <label for="Adelie">Adélie</label>
-               <div class="check"></div>
-             </div>
-             <div>
-               <input type="radio" id="Gentoo" name="selector" />
-               <label for="Gentoo">Gentoo</label>
-               <div class="check"></div>
-             </div>
-             <div>
-               <input type="radio" id="Chinstrap" name="selector" />
-               <label for="Chinstrap">Chinstrap</label>
-               <div class="check"></div>
-             </div>
-             <div>
-               <input type="checkbox" id="outliers" />
-               <label for="outliers">Exclude outliers</label>
-               <div class="checkmark"></div>
-             </div>
-           </div>
-         </div>
-       </div>
-     </div>
+      <div class="chart-wrapper">
+        <div id="chart1" class="chart-wide">
+          <div class="selector">
+            <text>Choose species</text>
+            <div class="options">
+              <div>
+                <input
+                  type="radio"
+                  id="Adelie"
+                  name="selector"
+                  checked="checked"
+                />
+                <label for="Adelie">Adélie</label>
+                <div class="check"></div>
+              </div>
+              <div>
+                <input type="radio" id="Gentoo" name="selector" />
+                <label for="Gentoo">Gentoo</label>
+                <div class="check"></div>
+              </div>
+              <div>
+                <input type="radio" id="Chinstrap" name="selector" />
+                <label for="Chinstrap">Chinstrap</label>
+                <div class="check"></div>
+              </div>
+              <div>
+                <input type="checkbox" id="outliers" />
+                <label for="outliers">Exclude outliers</label>
+                <div class="checkmark"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <p>
-        Weight shows the widest gender gap for all three species. This makes
+        Weight shows the largest gender gap for all three species. This makes
         sense: a study of one Adélie colony found that 17.3% of chick losses
         were from parent deserting the nest due to starvation, and since the
         returning mates arrived only a few days later, the loss could have been
@@ -91,22 +102,17 @@
         >
       </p>
       <p>
-        While males are generally larger than females, the distinction can be
-        subtle. On few features — weight for Adélie and Gentoo, beak depth for
-        Gentoo, and to lesser extent beak length for Chinstrap — we can almost
-        draw a line to roughly separate observations of each gender. On others,
-        blue and green dots migle over large areas, with both genders occupying
-        the same range of measurements.
+        On a few features, we can almost draw a line to separate male from
+        female observations. On others, blue and green dots intermigle, with
+        both genders occupying roughly the same range of measurements. This also
+        makes sense: in humans, broad shoulders or sharp face shapes are not
+        exclusive to men. Not one but several features together are better
+        predictor of sex.
       </p>
       <p>
-        This also makes sense: in humans, broad shoulders or angular face shapes
-        are not exclusive to men. Not one but a combination of several features
-        may be more accurate predictor of sex.
-      </p>
-      <p>
-        This may be an overgeneralization, but it looks like plump, curvaceous women with
-        significant lips would translate to very macho penguins, making them highly
-        desirable to both species.
+        Side note: just from these graphs alone, it looks to me like plump,
+        curvaceous women with significant lips would translate to very macho
+        penguins, making them highly desirable to both species.
       </p>
       <div class="footnote">
         <ol>
@@ -114,12 +120,15 @@
             Gorman KB, Williams TD, Fraser WR (2014) Ecological Sexual
             Dimorphism and Environmental Variability within a Community of
             Antarctic Penguins (Genus Pygoscelis). PLoS ONE 9(3): e90081.
-            <a href="https://doi.org/10.1371/journal.pone.0090081"
+            <a
+              href="https://doi.org/10.1371/journal.pone.0090081"
+              target="_blank"
               >http://doi.org</a
             >
             (via
             <a
               href="https://www.kaggle.com/parulpandey/palmer-archipelago-antarctica-penguin-data"
+              target="_blank"
               >www.kaggle.com</a
             >)
           </li>
@@ -129,41 +138,44 @@
           <li id="note-3">
             The Ocean Portal, Smithsonian Institution, National Museum of
             Natural History, and Sant Marine Science Chair, accessed 3 March
-            2022 (<a href="https://ocean.si.edu/ocean-life/seabirds/penguins"
+            2022 (<a
+              href="https://ocean.si.edu/ocean-life/seabirds/penguins"
+              target="_blank"
               >http://ocean.si.edu</a
             >)
           </li>
         </ol>
         <div>
           <p>
-            <span class="pop">Limitations</span><br />The highlighted
-            averages in this graph don't reflect conclusions from the research
-            paper that accompanies the dataset. It suggests the strongest
-            predictive features of male are:
+            <span class="pop">Limitations</span><br />The highlighted averages
+            in these graphs don't reflect conclusions from the research paper
+            that comes with the dataset. The paper suggests the strongest
+            predictors of male are:
           </p>
           <ul>
-            <li>Weight and beak length for Adélie</li>
-            <li>Weight and beak depth for Gentoo</li>
-            <li>Beak length and depth for Chinstrap</li>
+            <li>Weight and beak length in Adélie</li>
+            <li>Weight and beak depth in Gentoo</li>
+            <li>Beak length and depth in Chinstrap</li>
           </ul>
           <p>
-            With weight the least predictive feature for Chinstrap, and wing
-            length a weak predictor for all three species. Beside showing the
-            latter (wing length), the graph fails to reflect most of the rest.
-            This may be because comparing averages is a weak way to determine
-            predictive features: it doesn't take into account the many overlaps
-            in the observation ranges of two genders. A large overlap means the
-            feature cannot be used to easily distinguish categories. For this
-            classification problem, multivariate logistic regression and more
-            advanced statistical analyses, like those performed in the research
-            paper, would be a better way to go. Since I'm statistic-illiterate,
-            here's a penguin: 🐧
+            ...with weight the least predictive feature for Chinstrap, and wing
+            length a weak predictor for all three species. Comparing averages
+            may be a weak way to determine predictive features, as it
+            doesn't take into account the many overlaps in the observation
+            ranges of two genders. A large overlap means we cannot draw a line
+            to separate one gender's observations from the other's. Features
+            with large overlaps, therefore, cannot be used to easily distinguish
+            categories. For this classification problem, multivariate logistic
+            regression and more advanced statistical analyses, like those
+            performed in the research paper, would be a better way to go. Since
+            I'm statistic-illiterate, here's a penguin: 🐧
           </p>
         </div>
+
         <p>
           <span class="pop">Tech Stack</span>
-          <br>Data analysis: Python (Pandas, Matplotlib, Seaborn)
-          <br>Visualization: Javascript (D3.js), HTML, CSS
+          <br />Data analysis: Python (Pandas, Matplotlib, Seaborn)
+          <br />Visualization: Javascript (D3.js), HTML, CSS
         </p>
       </div>
     </main>

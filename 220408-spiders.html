@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A data vis blog of mundane questions." />
+    <meta
+      name="keywords"
+      content="Data Visualization, Data Analysis, D3, Spiders, World Spider Catalog"
+    />
+    <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="stylesheet" href="styles/220408-spiders.css" />
+    <title>duckingdata</title>
+  </head>
+  <body>
+    <script id="nav-bar" src="scripts/nav.js"></script>
+    <main onclick="bodyOnClick()">
+      <header class="pop">263 years of spider discoveries</header>
+      <p>
+        The World Spider Catalog<sup>(<a href="#note-1">1</a>)</sup> chronicles
+        all spider species discovered between 1757 and present day — up to 2019
+        in this particular dataset. It lists a total of 47,714 recognized species, which
+        such rich information on year and location of discovery that I think I
+        got hiccups from excitement.
+      </p>
+      <p>
+        For ease of visualization, I've reduced location details to more broad
+        continent groups<sup>(<a href="#note-2">2</a>)</sup>. Species data of
+        six continents together with a world summary<sup
+          >(<a href="#note-3">3</a>)</sup
+        >
+        is shown in the below radial graph. Yearly
+        <mark>new discoveries</mark> are on the outer ring, and
+        <mark>accumulated discoveries</mark> (i.e. total species known as of any
+        given year) on the inner circle.
+      </p>
+      <div class="chart-wrapper">
+        <div id="chart1" class="chart-mobile"></div>
+      </div>
+      <p>
+        Asia and Africa have the most spiders in the long run. Europe ranks
+        last, with its number of species only one third that of Asia. However,
+        during the 18th and 19th centuries Europe rivaled Asia in the number of
+        most yearly discoveries, probably due to rich naturalist activities and
+        (then) more advanced record-keeping.
+      </p>
+      <div>
+        <p>
+          Moving from continent view to spider close-ups, I wanted a way to
+          highlight interesting spiders in the context of quantitative data.
+          There were several levels of spider grouping<sup
+            >(<a href="#note-4">4</a>)</sup
+          >
+          to consider:
+        </p>
+        <ul>
+          <li>
+            Several spider <mark>species</mark> can belong to a
+            <mark>genus</mark>; e.g. the infamous black widow and its less
+            venomous brown relative belong to the genus Latrodectus.
+          </li>
+          <li>
+            Several genera belong to a <mark>family</mark>; e.g. Latrodectus and
+            Parasteatoda (genus of the common house spiders) both belong to the
+            family Theridiidae.
+          </li>
+          <li>
+            Several families belong to an <mark>infraorder</mark>; e.g.
+            Theridiidae and Desidae (family to which belong marine spiders that
+            live inbetween ocean tides) belong to the infraorder Araneomorphae.
+          </li>
+          <li>
+            Several infraorders belong to a <mark>suborder</mark>; and all
+            suborders, in turn, belong to the umbrella
+            <mark>order</mark> Araneae — air-breathing arthropods that have
+            eight legs, fangs generally able to inject venom, and spinnerets
+            that extrude silk — known as spiders.
+          </li>
+        </ul>
+        <p>
+          (The order Araneae itself belongs to the class Arachnid, which
+          includes spiders, scorpions, ticks, mites, vinegaroons, and others.)
+        </p>
+      </div>
+      <p>
+        Since each species was one data point, and very few species are popular
+        enough to have a catchy name like "black widow" — their scientific name
+        often long and not that easy on the eye, I decided to focus on the genus
+        level. Below is a graph of <mark>top spider genera</mark>, detailing
+        their discovery over time and their brief profile.
+      </p>
+      <div class="chart-wrapper vertical-flex">
+        <div>
+          <div>
+            <div class="selector">
+              <div>
+                <text class="filter tiny-text">Choose location</text>
+                <div>
+                  <text>See top 10 genera of</text>
+                  <select name="continent" id="select-continent">
+                    <option value="world" selected>all continents</option>
+                  </select>
+                </div>
+              </div>
+              <div>
+                <text class="filter tiny-text">Sort genera by</text>
+                <div class="sorting">
+                  <div class="sort-options">
+                    <div class="total-species-div">
+                      <input
+                        type="radio"
+                        name="metric"
+                        id="total-species"
+                        checked="checked"
+                      />
+                      <label for="total-species">Most species in genus</label>
+                      <div class="check"></div>
+                    </div>
+                    <div class="first-discovery-div">
+                      <input type="radio" name="metric" id="first-discovery" />
+                      <label for="first-discovery">Earliest discovery</label>
+                      <div class="check"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="chart2" class="chart-narrow">
+          <div class="genus-profile">
+            <text class="genus-name"></text>
+            <img class="genus-pic" src="" alt="" />
+            <text class="source tiny-text">(5)</text>
+            <text class="small-text">
+              First discovered <span class="continent"></span> in
+              <span class="first-seen pop"></span>. Also known as
+              <span class="common-name"></span>.
+            </text>
+          </div>
+          <div class="tooltip bottom-pointer">
+            <text class="year small-text"></text>
+            <div>
+              <text>Newly disovered</text>
+              <text class="new-species pop"></text>
+            </div>
+            <div>
+              <text>Total species so far</text>
+              <text class="cumsum pop"></text>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footnote">
+        <ol>
+          <li id="note-1">
+            World Spider Catalog (2019). World Spider Catalog. Version 20.0.
+            Natural History Museum Bern, online at
+            <a href="http://wsc.nmbe.ch" target="_blank">http://wsc.nmbe.ch</a>.
+            doi: 10.24436/2. Accessed on 8 April 2022 via
+            <a
+              href="https://www.checklistbank.org/dataset/1029/about"
+              target="_blank"
+              >ChecklistBank</a
+            >, developed by
+            <a href="https://www.gbif.org/" target="_blank">GBIF</a> and
+            <a href="https://www.catalogueoflife.org/" target="_blank"
+              >Catalogue of Life</a
+            >
+          </li>
+          <li id="note-2">
+            Since this was primarily a visualization exercise, I took a lot of
+            liberties in manually attributing continents to locations. For
+            example, St. Helena island, almost half way between South America
+            and Africa, was grouped into Africa. Species with Mediterranean tags
+            were grouped into Europe, even though they very well could be found
+            in some North African port cities. Some remote locations, like the
+            South Georgia and South Sandwich Islands, although closer to South
+            America, were put together with the French Southern and Antarctic
+            Lands into the continent of Antartica, which, in the end, was not
+            shown in the graphs as it has too few species. I think manually
+            editing more than 47 thousand data points, plus a weak knowledge in
+            geography, led to some comatose decisions I'd really like not to
+            repeat in the next project.
+          </li>
+          <li id="note-3">
+            Many species were reportedly discovered on multiple continents
+            within the same year. The total amount of world's species can
+            therefore be less than the sum of the continents' in any given year.
+          </li>
+          <li id="note-4">
+            All information in this list was taken from
+            <a href="https://www.wikipedia.org/" target="_blank">Wikipedia</a>.
+          </li>
+          <li>
+            Image sources:
+            <ul>
+              <li>
+                <a href="https://www.wikipedia.org/" target="_blank"
+                  >Wikipedia</a
+                >
+              </li>
+              <li>
+                <a href="https://www.researchgate.net/" target="_blank"
+                  >ResearchGate</a
+                >
+              </li>
+              <li>
+                <a href="https://www.flickr.com/" target="_blank">flickr</a>
+              </li>
+              <li>
+                <a href="https://eol.org/" target="_blank"
+                  >Encyclopedia of Life</a
+                >
+              </li>
+              <li>
+                <a href="https://www.naturespot.org.uk/" target="_blank"
+                  >NatureSpot</a
+                >
+              </li>
+              <li>
+                <a href="http://www.arachne.org.au/default.asp" target="_blank"
+                  >Spiders of Australia</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://www.ecoregistros.org/site/index.php"
+                  target="_blank"
+                  >EcoRegistros</a
+                >
+              </li>
+              <li>
+                <a href="https://bugguide.net/node/view/15740" target="_blank"
+                  >BugGuide</a
+                >
+              </li>
+              <li>
+                <a href="https://arachnids.myspecies.info/" target="_blank"
+                  >Arachnids of Central America</a
+                >
+              </li>
+            </ul>
+          </li>
+        </ol>
+        <p>
+          <span class="pop">Tech Stack</span>
+          <br />Data analysis: Python (Pandas, Matplotlib, Seaborn)
+          <br />Visualization: Javascript (D3.js), HTML, CSS
+        </p>
+      </div>
+    </main>
+  </body>
+  <script src="scripts/d3.min.js"></script>
+  <script src="scripts/220408-spiders.js"></script>
+</html>

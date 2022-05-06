@@ -4,8 +4,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="A data vis blog of mundane questions.">
-    <meta name="keywords" content="Data Visualization, Data Analysis, D3, Primes, Prime Numbers">
+    <meta name="description" content="A data vis blog of mundane questions." />
+    <meta
+      name="keywords"
+      content="Data Visualization, Data Analysis, D3, Primes, Prime Numbers"
+    />
     <link rel="stylesheet" href="styles/styles.css" />
     <link rel="stylesheet" href="styles/220310-primes.css" />
     <title>duckingdata</title>
@@ -15,27 +18,28 @@
     <main onclick="bodyOnClick()">
       <header class="pop">How "prime" are prime numbers?</header>
       <p>
-        Mathematicians and lay people mean different things when it comes to
-        "prime". In maths, primes are numbers greater than 1 that cannot be
-        divided by any number other than 1 and themselves. 2, 3, 5, 7, 9, and 11
-        are primes. They're "the atoms of number theory, the basic indivisble
-        entities of which all numbers are made"<sup>
+        The word "prime" means different things to mathematicians and lay
+        people. In maths, primes are numbers greater than 1 that cannot be
+        divided by any number other than 1 and themselves. (2, 3, 5, 7, 9, 11,
+        and 13 are primes.) They're "the atoms of number theory, the basic
+        indivisble entities of which all numbers are made"<sup>
           (<a href="#note-1">1</a>)</sup
         >, and so occupy a very special place in the world of number theory.
       </p>
       <div>
         <p>
-          On the other hand, in an Asian country with strong Chinese influence
-          (like Vietnam, where I'm from), prime usually means lucky numbers. A
-          number is lucky if it's made up of lucky digits, which are those when
-          pronounced in Mandarin or Cantonese sound like a good word:
+          On the other hand, for lay people, prime means premium. In an Asian
+          country with strong Chinese influence (like Vietnam, where I'm from)
+          prime numbers are lucky numbers. A number is lucky if it's made up of
+          lucky digits, which are those when pronounced in Mandarin or Cantonese
+          sound like a good word:
         </p>
         <ul>
-          <li>9 sounds like "longevity" 🖖</li>
-          <li>8 "prosperity" 💸</li>
-          <li>6 "happiness", "fortune" 🍀</li>
-          <li>2 "easy", "bright" 🏄‍♀️</li>
-          <li>0 "good" 👶</li>
+          <li>9 sounds like "longevity"</li>
+          <li>8 "prosperity"</li>
+          <li>6 "happiness", "fortune"</li>
+          <li>2 "easy", "bright"</li>
+          <li>0 "good"</li>
         </ul>
         <p>
           4 sounds like "death" — the most unlucky number. 1, 3, 5, 7 could
@@ -57,19 +61,22 @@
       </p>
       <p>
         The good news is primes greater than 2 are all odd numbers (by
-        definition they cannot be divisible by 2), which means that by choosing
+        definition they cannot be divisible by 2). Which means that by choosing
         a lucky number that's also a prime, you've cut down the competing
         possibilities by at least half. This makes your number at least twice as
         rare.
       </p>
       <p>
         Even better: primes other than 5 cannot be divisible by 5, further
-        removing from competition all longer numbers ending with 5. Even better
-        than better: primes appear a bit less often as we move into bigger
-        numbers. Below is a histogram that shows
+        removing from competition all numbers of two digits and above ending
+        with 5.
+      </p>
+      <p>
+        Even better than better: primes appear a bit less often as we move into
+        bigger numbers. Below is a histogram that shows
         <mark>the decreasing occurence of primes</mark
         ><sup>(<a href="#note-4">4</a>)</sup>
-        smaller than one billion.
+        among numbers smaller than one billion.
       </p>
       <div class="chart-wrapper">
         <div id="chart1" class="chart-narrow">
@@ -89,10 +96,10 @@
         </div>
       </div>
       <p>
-        So the bigger the prime, the rarer it is, and rare is good (I doubt
-        anyone would pay as much for something everyone else can have). Now, we
-        also want our pick at the lucky digits — the more 8s and 9s the better.
-        Luckily, by counting
+        So the bigger the prime, the rarer it is, and rare is good (I don't
+        think anyone would pay as much for something everyone else can have).
+        Now, we also want our pick at the lucky digits — the more 8s and 9s the
+        better. Luckily, by counting
         <mark
           >the occurrence of each digit in the more than 50 million primes</mark
         >
@@ -127,24 +134,24 @@
         </div>
       </div>
       <p>
-        To sum up, it seems to me that when we apply both definitions of
-        "prime" — the mathematical and Chinese numerological — we end up with
-        pretty interesting numbers. The properties of primes boost their rarity,
-        without restricting our choice in lucky digits and patterns. After all,
-        if our Vietnamese business(wo)man is going to pay big bucks for it, why
+        To sum up, it seems to me that when we apply both definitions of "prime"
+        — the mathematical and Chinese numerological — we end up with pretty
+        interesting numbers. The properties of primes boost their rarity,
+        without restricting our choice of lucky digits and lucky patterns. After
+        all, if our Vietnamese business magnate is paying big bucks for it, why
         not add an extra layer of meaning to further justify the cost? I've
         never heard of a lucky charm, collector's item, or artwork having too
         much meaning.
       </p>
       <p>
-        Let's now explore our lucky primes. To avoid the browser choking on
-        itself, I've applied a set of arbitrary rules<sup
+        Let's now explore these lucky primes. To avoid overloading the browser,
+        I've applied a set of arbitrary rules<sup
           >(<a href="#note-5">5</a>)</sup
         >
         to reduce the 50 million primes down to just 3.3 million — some of the
         most premium and lucky — displayed accross
-        <span class="page-num"></span> pages. Input your favorite digit or
-        pattern to see the pages that contain your lucky numbers.
+        <span class="page-num"></span> pages in increasing order. Input your
+        favorite digit or pattern to see which pages contain your lucky numbers.
       </p>
       <div class="chart-wrapper">
         <div id="chart4" class="chart-narrow">
@@ -263,6 +270,5 @@
     </main>
   </body>
   <script src="scripts/d3.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prime-functions/index.min.js"></script>
   <script src="scripts/220310-primes.js"></script>
 </html>

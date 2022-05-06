@@ -13,7 +13,7 @@
 
 .bar {
   fill: blue;
-  opacity: var(--faint-dots-opacity);
+  opacity: .2;
   stroke: var(--base-color);
 }
 
@@ -73,7 +73,7 @@
 
 .hover-rect {
   fill: var(--accent-color);
-  mix-blend-mode: overlay;
+  mix-blend-mode: soft-light;
   pointer-events: none;
 }
 
