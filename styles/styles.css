@@ -397,7 +397,7 @@ svg {
   letter-spacing: -0.05rem;
   line-height: 1.2;
   max-width: 1050px;
-  top: -10px;
+  top: -5px;
   width: calc(100vw - var(--nav-width) - var(--padding)*3);
   word-spacing: .1em;
 }
@@ -507,6 +507,7 @@ svg {
     width: var(--paragraph-width-mobile);
   }
   .massive-home :is(a, header, p) {
+    top: -10px;
     width: calc(100vw - var(--padding)*3);
   }
 }
