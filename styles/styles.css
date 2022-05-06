@@ -387,18 +387,18 @@ svg {
 }
 
 .massive-home {
-  opacity: .15;
+  opacity: .2;
 }
 
 .massive-home :is(a, header, p) {
   color: var(--accent-color);
-  font-size: clamp(3rem, 3vw, 5rem);
+  font-size: clamp(2.4rem, 3vw, 3rem);
   font-weight: 400;
   letter-spacing: -0.05rem;
   line-height: 1.2;
-  max-width: none;
+  max-width: 1050px;
   top: -10px;
-  width: calc(100vw - var(--nav-width) - var(--padding)*4);
+  width: calc(100vw - var(--nav-width) - var(--padding)*3);
   word-spacing: .1em;
 }
 
@@ -410,7 +410,7 @@ svg {
 .massive-home sup {
   font-size: clamp(1rem, 1vw, 2rem);
   letter-spacing: normal;
-  top: -10px;
+  top: -6px;
 }
 
 .open-menu {
@@ -507,6 +507,6 @@ svg {
     width: var(--paragraph-width-mobile);
   }
   .massive-home :is(a, header, p) {
-    width: calc(100vw - var(--padding)*4);
+    width: calc(100vw - var(--padding)*3);
   }
 }
