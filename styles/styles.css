@@ -506,8 +506,11 @@ svg {
   .massive {
     width: var(--paragraph-width-mobile);
   }
-  .massive-home :is(a, header, p) {
+  .massive-home :is(header, p) {
     top: -10px;
+    width: calc(100vw - var(--padding)*3);
+  }
+  .massive-home a {
     width: calc(100vw - var(--padding)*3);
   }
 }
